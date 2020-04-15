@@ -1,7 +1,5 @@
 pipeline {
-     agent { 
-             label 'fahadosaimi/demolocal'
-                  }
+     agent { dockerfile true }
      stages {
 
          stage('Environment Setup and Lint ') {

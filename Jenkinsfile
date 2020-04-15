@@ -17,7 +17,9 @@ pipeline {
         //  }
          stage('Upload image to Docker Hub') {
              steps {
-                 sh './upload_docer.sh'       
+                 sh 'dockerpath=""'
+                 sh 'echo "Docker ID and Image: $dockerpath"'
+                 sh 'docker push fahadosaimi/demolocal'       
              }
          }         
 

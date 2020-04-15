@@ -19,7 +19,7 @@ pipeline {
              steps {
                  sh 'sudo docker build --tag=fahadosaimi/demolocal .'
                  sh 'sudo docker image ls'
-                 sh 'sudo docker run -it fahadosaimi/demolocal'       
+                 sh 'sudo docker run fahadosaimi/demolocal'       
              }
          }   
          stage('Upload image to Docker Hub') {

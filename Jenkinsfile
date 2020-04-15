@@ -17,6 +17,13 @@ pipeline {
         //  }
          stage('Upload image to Docker Hub') {
              steps {
+                 sh 'docker build --tag=fahadosaimi/demolocal .'
+                 sh 'docker image ls'
+                 sh 'docker run -p 8000:80  -it fahadosaimi/demolocal bash'       
+             }
+         }   
+         stage('Upload image to Docker Hub') {
+             steps {
                  sh 'dockerpath=""'
                  sh 'echo "Docker ID and Image: $dockerpath"'
                  sh 'sudo docker push fahadosaimi/demolocal'       

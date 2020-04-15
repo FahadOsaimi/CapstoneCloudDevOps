@@ -12,7 +12,7 @@ pipeline {
          }
          stage('Lint Dockerfile and app.py') {
              steps {
-                 sh 'sudo apt-get install hadolint'
+                 sh 'sudo -S apt-get install hadolint'
                  sh 'python3 -m venv ~/.devops'
                  sh ' pip install --upgrade pip && pip install -r requirements.txt && pip install pylint --upgrade'
                  sh ' hadolint Dockerfile '

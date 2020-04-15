@@ -19,7 +19,7 @@ pipeline {
              steps {
                  sh 'dockerpath=""'
                  sh 'echo "Docker ID and Image: $dockerpath"'
-                 sh 'docker push fahadosaimi/demolocal'       
+                 sh 'sudo docker push fahadosaimi/demolocal'       
              }
          }         
 

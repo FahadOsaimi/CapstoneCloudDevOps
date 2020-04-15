@@ -14,7 +14,7 @@ pipeline {
              steps {
                  sh 'make all'
              }
-         },
+         }
         //  stage('Lint HTML') {
         //       steps {
         //           sh 'tidy -q -e index.html' 

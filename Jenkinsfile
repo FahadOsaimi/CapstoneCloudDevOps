@@ -10,11 +10,21 @@ pipeline {
                  '''
              }
          }
-         stage('Make all') {
+         stage('Lint Dockerfile and app.py') {
              steps {
-                 sh 'make all'
+                 sh 'apt install hadolint'
+                 sh 'python3 -m venv ~/.devops'
+                 sh ' pip install --upgrade pip && pip install -r requirements.txt && pip install pylint --upgrade'
+                 sh ' hadolint Dockerfile '
+                 sh ' pylint --disable=R,C,W1203 app.py'
+
+	
+                 
              }
          }
+          
+
+
         //  stage('Lint HTML') {
         //       steps {
         //           sh 'tidy -q -e index.html' 

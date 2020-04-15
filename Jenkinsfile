@@ -10,12 +10,16 @@ pipeline {
                  '''
              }
          }
-         stage('Environment setup and lint tests') {
+        //  stage('Environment setup and lint tests') {
+        //      steps {
+        //          sh ' make all'       
+        //      }
+        //  }
+         stage('Upload image to Docker Hub') {
              steps {
-                 sh ' make all'       
+                 sh './upload_docer.sh'       
              }
-         }
-          
+         }         
 
 
         //  stage('Lint HTML') {

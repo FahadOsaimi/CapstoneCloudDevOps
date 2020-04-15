@@ -1,7 +1,7 @@
 pipeline {
      agent any
      stages {
-         stage('Build') {
+         stage('Start') {
              steps {
                  sh 'echo "Hello World"'
                  sh '''
@@ -9,7 +9,12 @@ pipeline {
                      ls -lah
                  '''
              }
-         }
+         },
+         stage('Make all ( install , lint and test ) ') {
+             steps {
+                 sh 'make all'
+             }
+         },
         //  stage('Lint HTML') {
         //       steps {
         //           sh 'tidy -q -e index.html' 

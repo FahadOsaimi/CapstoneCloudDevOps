@@ -1,16 +1,8 @@
 pipeline {
-     agent any
+     agent { dockerfile true }
      stages {
-         stage('Start') {
-             steps {
-                 sh 'echo "Hello World"'
-                 sh '''
-                     echo "Multiline shell steps works too"
-                     ls -lah
-                 '''
-             }
-         }
-         stage('Environment setup') {
+
+         stage('Environment Setup and Lint ') {
              steps {
                  sh ' make all'       
              }
@@ -26,9 +18,7 @@ pipeline {
              steps {
                  sh 'dockerpath=""'
                  sh 'echo "Docker ID and Image: $dockerpath"'
-                //  sh 'docker login --username fahadosaimi'
-                //  sh 'd45d6276-ded2-4a36-aa89-bb4b82f27c4e'
-                 sh 'sudo docker push fahadosaimi/demolocal'       
+                 // sh 'sudo docker push fahadosaimi/demolocal'       
              }
          }         
 

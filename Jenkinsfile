@@ -15,11 +15,11 @@ pipeline {
         //          sh ' make all'       
         //      }
         //  }
-         stage('Run Docker') {
+         stage('Build Docker') {
              steps {
                  sh 'sudo docker build --tag=fahadosaimi/demolocal .'
                  sh 'sudo docker image ls'
-                 sh 'sudo docker run fahadosaimi/demolocal'       
+                //  sh 'sudo docker run fahadosaimi/demolocal'       
              }
          }   
          stage('Upload image to Docker Hub') {

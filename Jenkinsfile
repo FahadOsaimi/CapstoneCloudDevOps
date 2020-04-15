@@ -9,8 +9,8 @@ pipeline {
                      ls -lah
                  '''
              }
-         },
-         stage('Make all ( install , lint and test ) ') {
+         }
+         stage('Make all') {
              steps {
                  sh 'make all'
              }

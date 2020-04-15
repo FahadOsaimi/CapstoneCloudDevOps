@@ -10,11 +10,11 @@ pipeline {
                  '''
              }
          }
-        //  stage('Environment setup and lint tests') {
-        //      steps {
-        //          sh ' make all'       
-        //      }
-        //  }
+         stage('Environment setup') {
+             steps {
+                 sh ' make all'       
+             }
+         }
          stage('Build Docker') {
              steps {
                  sh 'sudo docker build --tag=fahadosaimi/demolocal .'

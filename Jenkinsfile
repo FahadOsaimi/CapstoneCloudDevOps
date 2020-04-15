@@ -15,7 +15,7 @@ pipeline {
         //          sh ' make all'       
         //      }
         //  }
-         stage('Upload image to Docker Hub') {
+         stage('Run Docker') {
              steps {
                  sh 'docker build --tag=fahadosaimi/demolocal .'
                  sh 'docker image ls'

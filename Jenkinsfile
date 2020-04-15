@@ -26,8 +26,8 @@ pipeline {
              steps {
                  sh 'dockerpath=""'
                  sh 'echo "Docker ID and Image: $dockerpath"'
-                 sh 'docker login --username fahadosaimi'
-                 sh 'd45d6276-ded2-4a36-aa89-bb4b82f27c4e'
+                //  sh 'docker login --username fahadosaimi'
+                //  sh 'd45d6276-ded2-4a36-aa89-bb4b82f27c4e'
                  sh 'sudo docker push fahadosaimi/demolocal'       
              }
          }         

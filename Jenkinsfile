@@ -10,15 +10,9 @@ pipeline {
                  '''
              }
          }
-         stage('Lint app.py') {
+         stage('Environment setup and lint tests') {
              steps {
-                 sh 'python3 -m venv ~/.devops'
-                 sh ' pip install --upgrade pip && pip install -r requirements.txt '
-                 sh ' pip install pylint --upgrade'
-                 sh ' pylint --disable=R,C,W1203 app.py'
-
-	
-                 
+                 sh ' make all'       
              }
          }
           

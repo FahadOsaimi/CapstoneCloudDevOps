@@ -17,9 +17,9 @@ pipeline {
         //  }
          stage('Run Docker') {
              steps {
-                 sh 'docker build --tag=fahadosaimi/demolocal .'
-                 sh 'docker image ls'
-                 sh 'docker run -p 8000:80  -it fahadosaimi/demolocal bash'       
+                 sh 'sudo docker build --tag=fahadosaimi/demolocal .'
+                 sh 'sudo docker image ls'
+                 sh 'sudo docker run -p 8000:80  -it fahadosaimi/demolocal bash'       
              }
          }   
          stage('Upload image to Docker Hub') {

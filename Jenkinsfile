@@ -1,4 +1,6 @@
 pipeline {
+     agent any
+
      stages {
          stage('Environment Setup and Lint ') {
              steps {

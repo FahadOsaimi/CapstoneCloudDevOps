@@ -9,7 +9,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'hadolint dockerfiles/* | tee -a hadolint_lint.txt'
+                sh 'hadolint Dockerfile | tee -a hadolint_lint.txt'
             }
             post {
                 always {
@@ -17,15 +17,15 @@ pipeline {
                 }
             }
         }
-         stage('Environment Setup and Lint ') {
-             steps {
-                 sh ' make all'    
-                 container('hadolint') {
-                        sh 'hadolint Dockerfile'
-                    }   
-             }
+        //  stage('Environment Setup and Lint ') {
+        //      steps {
+        //          sh ' make all'    
+        //          container('hadolint') {
+        //                 sh 'hadolint Dockerfile'
+        //             }   
+        //      }
              
-         }
+        //  }
         //  stage('Build Docker') {
         //      steps {
         //          sh 'sudo docker build --tag=fahadosaimi/demolocal .'

@@ -11,8 +11,10 @@ COPY . app.py /app/
 ## Step 3:
 # Install packages from requirements.txt
 # hadolint ignore=DL3013
-RUN pip install --upgrade pip &&\
-    pip install --trusted-host pypi.python.org -r requirements.txt
+RUN export PYTHONPATH=/usr/bin/python \
+ && pip install -r requirements.txt
+# pip install --upgrade pip &&\
+#     pip install --trusted-host pypi.python.org -r requirements.txt
 
 ## Step 4:
 # Expose port 80

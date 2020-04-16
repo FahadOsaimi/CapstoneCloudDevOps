@@ -2,7 +2,7 @@ pipeline {
      agent any
      stages {
 
-        stage ("lint dockerfile") {
+        stage ("Lint Dockerfile") {
             agent {
                 docker {
                     image 'hadolint/hadolint:latest-debian'
@@ -26,13 +26,13 @@ pipeline {
         //      }
              
         //  }
-        //  stage('Build Docker') {
-        //      steps {
-        //          sh 'sudo docker build --tag=fahadosaimi/demolocal .'
-        //          sh 'sudo docker image ls'
-        //         //  sh 'sudo docker run fahadosaimi/demolocal'       
-        //      }
-        //  }   
+         stage('Build Docker') {
+             steps {
+                 sh 'sudo docker build --tag=fahadosaimi/demolocal .'
+                 sh 'sudo docker image ls'
+                 sh 'sudo docker run fahadosaimi/demolocal'       
+             }
+         }   
         //  stage('Upload image to Docker Hub') {
         //      agent {
         //          dockerfile true 

@@ -1,26 +1,31 @@
 pipeline {
-     agent { dockerfile true }
      stages {
-
          stage('Environment Setup and Lint ') {
              steps {
-                 sh ' make all'       
+                 sh ' make all'    
+                 container('hadolint') {
+                        sh 'hadolint Dockerfile'
+                    }   
              }
+             
          }
-         stage('Build Docker') {
-             steps {
-                 sh 'sudo docker build --tag=fahadosaimi/demolocal .'
-                 sh 'sudo docker image ls'
-                //  sh 'sudo docker run fahadosaimi/demolocal'       
-             }
-         }   
-         stage('Upload image to Docker Hub') {
-             steps {
-                 sh 'dockerpath=""'
-                 sh 'echo "Docker ID and Image: $dockerpath"'
-                 // sh 'sudo docker push fahadosaimi/demolocal'       
-             }
-         }         
+        //  stage('Build Docker') {
+        //      steps {
+        //          sh 'sudo docker build --tag=fahadosaimi/demolocal .'
+        //          sh 'sudo docker image ls'
+        //         //  sh 'sudo docker run fahadosaimi/demolocal'       
+        //      }
+        //  }   
+        //  stage('Upload image to Docker Hub') {
+        //      agent {
+        //          dockerfile true 
+        //      }
+        //      steps {
+        //          sh 'dockerpath=""'
+        //          sh 'echo "Docker ID and Image: $dockerpath"'
+        //          sh 'sudo docker push fahadosaimi/demolocal'       
+        //      }
+        //  }         
 
 
         //  stage('Lint HTML') {

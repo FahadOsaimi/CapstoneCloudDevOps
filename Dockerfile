@@ -12,7 +12,7 @@ COPY . app.py /app/
 # Install packages from requirements.txt
 # hadolint ignore=DL3013
 RUN export PYTHONPATH=/usr/bin/python \
- && pip install -r requirements.txt
+ && pip install --verbose -r requirements.txt
 # pip install --upgrade pip &&\
 #     pip install --trusted-host pypi.python.org -r requirements.txt
 

@@ -29,13 +29,19 @@ pipeline {
 
         
          stage('Build Docker') {
-             node{
-                 docker.withRegistry('https://registry.hub.docker.com', 'DockerHub'){
-                 def image = docker.build("fahadosaimi/demolocal")
-                 image.push()
-                 }
+                         
+             agent {
+
+                node{
+                    checkout scm
+
+                    docker.withRegistry('https://registry.hub.docker.com', 'DockerHub'){
+                        def image = docker.build("fahadosaimi/demolocal")
+                        image.push()
+                    }
 
 
+                }
              }
 
             //  steps {

@@ -36,7 +36,7 @@ pipeline {
                     checkout scm
 
                     docker.withRegistry('https://registry.hub.docker.com', 'DockerHub') {
-                        def image = docker.build("fahadosaimi/demolocal").withRun(' --dns 8.8.8.8')
+                        def image = docker.build("fahadosaimi/demolocal")
                         image.push()
                     }
                 

@@ -30,7 +30,7 @@ pipeline {
         
          stage('Build Docker') {
                          
-             agent {
+             steps {
 
                 node{
                     checkout scm

@@ -28,28 +28,19 @@ pipeline {
         //  }
 
         
-         stage('Build Docker') {
+        //  stage('Build Docker') {
                          
-             steps {
-
-                node{
-                    checkout scm
-
-                    docker.withRegistry('https://registry.hub.docker.com', 'DockerHub'){
-                        def image = docker.build("fahadosaimi/demolocal")
-                        image.push()
-                    }
+        //      steps {
 
 
-                }
-             }
+        //      }
 
-            //  steps {
-            //      sh 'docker build --tag=fahadosaimi/demolocal .'
-            //      sh 'docker image ls'
-            //      sh 'docker run fahadosaimi/demolocal'       
-            //  }
-         }   
+        //     //  steps {
+        //     //      sh 'docker build --tag=fahadosaimi/demolocal .'
+        //     //      sh 'docker image ls'
+        //     //      sh 'docker run fahadosaimi/demolocal'       
+        //     //  }
+        //  }   
         //  stage('Upload image to Docker Hub') {
         //      agent {
         //          dockerfile true 
@@ -81,5 +72,14 @@ pipeline {
         //       }
         //  }
      }
-     
+        node{
+            checkout scm
+
+            docker.withRegistry('https://registry.hub.docker.com', 'DockerHub'){
+                def image = docker.build("fahadosaimi/demolocal")
+                image.push()
+            }
+
+
+        }
 }

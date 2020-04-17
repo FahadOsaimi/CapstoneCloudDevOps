@@ -29,10 +29,15 @@ pipeline {
 
         
          stage('Build Docker') {
-             docker.withRegistry('https://registry.hub.docker.com', 'DockerHub'){
+             node{
+                 docker.withRegistry('https://registry.hub.docker.com', 'DockerHub'){
                  def image = docker.build("fahadosaimi/demolocal")
                  image.push()
+                 }
+
+
              }
+
             //  steps {
             //      sh 'docker build --tag=fahadosaimi/demolocal .'
             //      sh 'docker image ls'

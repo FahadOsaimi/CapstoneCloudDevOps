@@ -31,17 +31,22 @@ pipeline {
          stage('Build Docker') {
                          
              steps {
+                script {
 
-                node('docker'){
                     checkout scm
 
                     docker.withRegistry('https://registry.hub.docker.com', 'DockerHub'){
                         def image = docker.build("fahadosaimi/demolocal")
                         image.push()
                     }
-
-
+                
                 }
+
+                // node('docker'){
+
+
+
+                // }
              }
 
             //  steps {

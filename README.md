@@ -35,7 +35,7 @@ You would need to install Jenkins in your local or in docker :
 
 ---
 
-### Demonstration 
+### B. Demonstration 
 
 1. Execute linting step in code pipeline 
 ![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/LintDockerStep0.png?raw=true)
@@ -47,15 +47,17 @@ You would need to install Jenkins in your local or in docker :
 
 ---
 
-### Deploy to cluster 
+### C. Deploy to cluster 
 
 1. To deploy docker image to Kubernetes cluster run the following command :
-``` sh scripts/run_kubernetes.sh ``` -->
+``` sh scripts/run_kubernetes.sh ``` 
 
+---
 
 ### Rolling Deployment 
 
 1. To rollback docker image deplyment in Kubernetes cluster run the following command :
-``` sh scripts/rollback_kubernetes.sh ``` -->
+``` sh scripts/rollback_kubernetes.sh ``` 
+
 
 ---

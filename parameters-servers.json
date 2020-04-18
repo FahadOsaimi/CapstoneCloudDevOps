@@ -1,8 +1,12 @@
 [
-	
+
 	{
 		"ParameterKey": "EnvironmentName",
-		"ParameterValue": "UdacityProject"
+		"ParameterValue": "UdacityCapstoneProject"
+	},
+	{
+		"ParameterKey": "KeyName",
+		"ParameterValue": "UdacityCapstoneKey"
 	},
 	{
 		"ParameterKey": "InstanceType",

@@ -8,6 +8,11 @@ Parameters:
     Description: An environment name that will be prefixed to resource names
     Type: String
 
+  KeyName:
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
+    Type: AWS::EC2::KeyPair::KeyName
+    ConstraintDescription: must be the name of an existing EC2 KeyPair.
+
   InstanceType:
     Description: WebServer EC2 instance type
     Type: String
@@ -27,10 +32,56 @@ Resources:
     Type: AWS::EC2::Instance
     Properties: 
       ImageId: ami-0d1cd67c26f5fca19
+      KeyName: 
+        Ref: KeyName
       InstanceType:
         Ref: InstanceType
       SecurityGroups:
-      - Ref: InstanceSecurityGroup
+      - Ref: ServerSecGroup
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          # Install docker
+          sudo apt-get update
+          sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+          sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+          sudo add-apt-repository \
+          "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+          $(lsb_release -cs) \
+          stable"
+          sudo apt-get update
+          sudo apt-get install -y docker-ce
+          sudo usermod -aG docker ubuntu
+          # sudo docker run -p 8080:8080 tomcat:8.0
+          # Install kubernetes
+          sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+          curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+          cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+          deb https://apt.kubernetes.io/ kubernetes-xenial main
+          EOF
+          sudo apt-get update
+          sudo apt-get install -y kubelet kubeadm kubectl
+          sudo apt-mark hold kubelet kubeadm kubectl
+          # This tags and uploads an image to Docker Hub
+          # Step 1:
+          # This is your Docker ID/path
+          dockerpath="fahadosaimi/demolocal"
+          # Step 2
+          # Run the Docker Hub container with kubernetes
+          kubectl run notebook\
+              --generator=run-pod/v1\
+              --image=$dockerpath\
+              --kubeconfig= KUBECONFIG\
+              --port=80 --labels app=notebook
+          # Step 3:
+          # List kubernetes pods
+          kubectl get pods
+          # Step 4:
+          # Forward the container port to a host
+          echo "sleeping for 180 seconds while waiting for pod to come up"
+          sleep 180
+          kubectl port-forward deployment/demolocal 8000:80 
+          kubectl logs --selector app=demolocal
       BlockDeviceMappings:
         -
           DeviceName: /dev/sdm
@@ -40,12 +91,32 @@ Resources:
             DeleteOnTermination: false
             VolumeSize: 20
   
-  InstanceSecurityGroup:
+  # InstanceSecurityGroup:
+  #   Type: AWS::EC2::SecurityGroup
+  #   Properties:
+  #     GroupDescription: Enable SSH access via port 22
+  #     SecurityGroupIngress:
+  #     - IpProtocol: tcp
+  #       FromPort: '22'
+  #       ToPort: '22'
+  #       CidrIp: 0.0.0.0/0
+
+  ServerSecGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: Enable SSH access via port 22
+      GroupDescription: Allow http to our hosts and SSH from local only
       SecurityGroupIngress:
       - IpProtocol: tcp
-        FromPort: '22'
-        ToPort: '22'
+        FromPort: 8080
+        ToPort: 8080
         CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 0.0.0.0/0
+      # SecurityGroupEgress:
+      # - IpProtocol: tcp
+      #   FromPort: 0
+      #   ToPort: 65535
+      #   CidrIp: 0.0.0.0/0
+

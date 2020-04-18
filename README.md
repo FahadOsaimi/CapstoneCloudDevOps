@@ -1,5 +1,4 @@
 # Capstone Project for Udacity Cloud DevOps
----
 
 ### A. Dependencies
 #### A.1. Python
@@ -33,5 +32,30 @@ Update capstoneDevopsUdacity Stack in AWS :
 You would need to install Jenkins in your local or in docker :
 [Install Jenkins](https://jenkins.io/doc/book/installing/)
 
+
+---
+
+### Demonstration 
+
+1. Execute linting step in code pipeline 
+![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/LintDockerStep0.png?raw=true)
+![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/LintDockerStep1%5C.png?raw=true)
+
+2. Build a Docker container in a pipeline
+![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/BuildDockerContainerPeline.png?raw=true)
+![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/ImageRepositoryStoreDockerImages.png?raw=true)
+
+---
+
+### Deploy to cluster 
+
+1. To deploy docker image to Kubernetes cluster run the following command :
+``` sh scripts/run_kubernetes.sh ``` -->
+
+
+### Rolling Deployment 
+
+1. To rollback docker image deplyment in Kubernetes cluster run the following command :
+``` sh scripts/rollback_kubernetes.sh ``` -->
 
 ---

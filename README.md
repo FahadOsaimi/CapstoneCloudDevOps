@@ -54,11 +54,14 @@ You would need to install Jenkins in your local or in docker :
 ![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/LintDockerStep0.png?raw=true)
 ![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/LintDockerStep1%5C.png?raw=true)
 
-2. Build a Docker container in a pipeline
-![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/BuildDockerContainerPeline.png?raw=true)
+2. Build a Docker container in a pipeline and Push to the repository.
+![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/BuildDockerContainerAndPush.png?raw=true)
 ![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/ImageRepositoryStoreDockerImages.png?raw=true)
 
 3. Deploying image to EKS cluster  
+![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/EKS1.png?raw=true)
+![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/EKS2.png?raw=true)
+![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/cloudFormation.png?raw=true)
 ![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/deploymentDone.png?raw=true)
 
 4. Rolling back deployment 

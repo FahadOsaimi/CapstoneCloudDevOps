@@ -44,19 +44,23 @@ You would need to install Jenkins in your local or in docker :
 ![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/BuildDockerContainerPeline.png?raw=true)
 ![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/ImageRepositoryStoreDockerImages.png?raw=true)
 
----
-
-### C. Deploy to cluster 
-1. To deploy docker image to Kubernetes cluster run the following command :
-``` sh scripts/run_kubernetes.sh ``` 
+3. Deploying image to EKS cluster  
 ![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/deploymentDone.png?raw=true)
 
+4. Rolling back deployment 
+![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/rollingbackDeployment.png?raw=true)
+
 ---
 
-### Rolling Deployment 
+### C. Deploy to EKS cluster 
+1. To deploy docker image to Kubernetes cluster run the following command :
+``` sh scripts/run_kubernetes.sh ``` 
+
+---
+
+### D. Rolling Deployment 
 1. To rollback docker image deplyment in Kubernetes cluster run the following command :
 ``` sh scripts/rollback_kubernetes.sh ``` 
-![alt text](https://github.com/FahadOsaimi/CapstoneCloudDevOps/blob/master/screenshots/rollingbackDeployment.png?raw=true)
 
 
 
